@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>First AngularJS Application</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body ng-app="MyApp">
+  <div class="container">
+    <h3 class="heading">Toggleable Tabs</h3>
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="nav-item nav-item-1">
+        <a class="nav-link nav-item-2 active" data-toggle="tab" href="#/viewdata">Home</a>
+      </li>
+      <li class="nav-item" >
+        <a class="nav-link" ng-hide="btn_hide" data-toggle="tab" href="#menu1">Register</a>
+      </li>
+    </ul>
+
+    <div ng-view></div>
+    <!-- Tab panes -->
+    <div class="tab-content" >
+      <script type="text/ng-template" id="viewData.htm">
+        <div id="home" class=" tab-pane active"><br>
+          <div >
+            <h1>Save Data</h1>
+            <h5></h5>
+            <div  ng-repeat="ls in list">
+              <div class="message-box" ng-repeat="lp in ls">
+                <div >
+                  <div class="title-message"><span>Email: </span> <span>{{ lp.email}}</span> </div>
+                  <div class="title-message"><span>First Name: </span> <span>{{ lp.fnames}}</span> </div>
+                  <div class="title-message"><span>Last Name: </span> <span>{{ lp.lnames}}</span> </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+      </script>
+      <script type="text/ng-template"  id="home.htm">
+        <div id="menu1"  class="tab-pane fade"><br>
+          <div class="register">
+            <div class="row justify-content-md-center">
+              <div class="col-xl-5 col-lg-6 col-md-7 col-sm-8">
+                <div class="create">
+                  <form>
+                    <h1>Create an account</h1>
+                    <div class="form-group form-margin">
+                      <label for="lnames">Email:</label>
+                      <input type="text" class="form-control form-style" ng-model="fnames" id="lnames" placeholder="Enter First Name">
+                    </div>
+                    <div class="form-group form-margin">
+                      <label for="fnames">Email:</label>
+                      <input type="text" class="form-control form-style" ng-model="lnames" id="fnames" placeholder="Enter Last Name">
+                    </div>
+                    <div class="form-group form-margin">
+                      <label for="email">Email:</label>
+                      <input type="email" class="form-control form-style" ng-model="usernames" id="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group form-margin">
+                      <label for="pwd">Password:</label>
+                      <input type="password" class="form-control form-style" ng-model="passwords" id="pwd" placeholder="Enter password">
+                    </div>
+                    <div class="form-check form-margin">
+                      <label >
+                        <input  class="label__checkbox" ng-model="checkadmins" type="checkbox" />
+                        <span class="label__text">
+                          <span class="label__check">
+                            <i class="fa fa-check icon"></i>
+                          </span>
+                          <p style="float: left;margin-top: 5px;">Remember me</p>
+                          <span ng-bind="checkadmins"></span>
+                        </span> 
+                      </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-style" ng-click="regmein(usernames,passwords)">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </script>
+    </div>
+  </div>
+
+
+<!--   <script src="js/controler.js"></script>
+  <script src="js/service.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+  <!-- AngularJS 1.5.x 1.5.8-->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js"></script>
+
+  <!--  library for custom token generator  -->
+  <script src="https://rawgit.com/firebase/firebase-token-generator-node/master/dist/firebase-token-generator.js"></script>
+  <!-- AngularFire (for using AngularJS 1.x with Firebase 3.0 -->
+  <!--    Only needed for controller $scope example -->
+  <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.js"></script>
+  <!-- Firebase -->
+  <!-- AngularFire -->
+  <script src="js/app.js"></script>
+</body>
+</html>

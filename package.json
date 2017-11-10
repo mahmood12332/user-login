@@ -1,0 +1,14 @@
+{
+  "name": "login",
+  "version": "1.0.0",
+  "dependencies" : {
+    "express"    : "~4.9.8",
+    "morgan"     : "~1.2.2"
+    },
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Mahmood Hassan",
+  "license": "ISC"
+}
